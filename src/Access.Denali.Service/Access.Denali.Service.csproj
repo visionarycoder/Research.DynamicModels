@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Access.Denali.Contract\Access.Denali.Contract.csproj" />
+    <ProjectReference Include="..\Data.Alaska\Data.Alaska.csproj" />
+  </ItemGroup>
+
+</Project>

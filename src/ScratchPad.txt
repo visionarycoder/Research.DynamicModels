@@ -1,0 +1,50 @@
+Product Catalog
+
+    Product:
+        ID: Unique identifier for the product.
+        Name: Name of the product.
+        Description: Detailed description of the product.
+        Price: Cost of the product.
+        Category: Category to which the product belongs.
+        Stock Quantity: Number of items available in stock.
+        Image URL: Link to the product image.
+    
+    Category:
+        ID: Unique identifier for the category.
+        Name: Name of the category.
+        Description: Description of the category.
+
+Order Management
+
+    Order:
+        ID: Unique identifier for the order.
+        Customer ID: Identifier for the customer who placed the order.
+        Order Date: Date when the order was placed.
+        Total Amount: Total cost of the order.
+        Status: Current status of the order (e.g., pending, shipped, delivered).
+            
+    Order Item:
+        ID: Unique identifier for the order item.
+        Order ID: Identifier for the order to which this item belongs.
+        Product ID: Identifier for the product.
+        Quantity: Number of units of the product ordered.
+        Price: Price of the product at the time of order.
+        
+    Customer:
+        ID: Unique identifier for the customer.
+        Name: Name of the customer.
+        Email: Email address of the customer.
+        Phone: Contact number of the customer.
+        Address: Shipping address of the customer.
+        
+Additional Objects
+
+    Supplier (if you want to manage suppliers):
+        ID: Unique identifier for the supplier.
+        Name: Name of the supplier.
+        Contact Info: Contact details of the supplier.
+    
+    Inventory (for more detailed stock management):
+        Product ID: Identifier for the product.
+        Warehouse Location: Location of the product in the warehouse.
+        Stock Level: Current stock level.
