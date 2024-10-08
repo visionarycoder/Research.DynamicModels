@@ -4,75 +4,55 @@ using Microsoft.Extensions.Logging;
 
 namespace Data.Alaska
 {
-    public class AlaskaContext(ILogger<AlaskaContext> logger, DbContextOptions<AlaskaContext> options)
-                        : DbContext(options)
+    public class AlaskaContext(ILogger<AlaskaContext> logger, DbContextOptions<AlaskaContext> options) : DbContext(options)
     {
-        public DbSet<Category> Categories { get; set; } = default!;
-        public DbSet<Customer> Customers { get; set; } = default!;
+        
         public DbSet<Extension> Extensions { get; set; } = default!;
-        public DbSet<Inventory> Inventories { get; set; } = default!;
-        public DbSet<Order> Orders { get; set; } = default!;
-        public DbSet<OrderItem> OrderItems { get; set; } = default!;
-        public DbSet<Product> Products { get; set; } = default!;
-        public DbSet<Supplier> Suppliers { get; set; } = default!;
+        public DbSet<ModifierExtension> ModifierExtensions { get; set; } = default!;
+        public DbSet<Property> Properties { get; set; } = default!;
+        public DbSet<Widget> Widgets { get; set; } = default!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Category>()
-                .HasMany(c => c.Extensions)
-                .WithOne()
-                .HasForeignKey(e => e.TargetId)
-                .HasPrincipalKey(c => c.Id)
-                .OnDelete(DeleteBehavior.Cascade);
-
-            modelBuilder.Entity<Customer>()
-                .HasMany(c => c.Extensions)
-                .WithOne()
-                .HasForeignKey(e => e.TargetId)
-                .HasPrincipalKey(c => c.Id)
-                .OnDelete(DeleteBehavior.Cascade);
-
-            modelBuilder.Entity<Extension>()
-                .HasDiscriminator<string>("TargetType");
-
-            modelBuilder.Entity<Inventory>()
-                .HasMany(i => i.Extensions)
-                .WithOne()
-                .HasForeignKey(e => e.TargetId)
-                .HasPrincipalKey(i => i.Id)
-                .OnDelete(DeleteBehavior.Cascade);
-
-            modelBuilder.Entity<Order>()
-                .HasMany(o => o.Extensions)
-                .WithOne()
-                .HasForeignKey(e => e.TargetId)
-                .HasPrincipalKey(o => o.Id)
-                .OnDelete(DeleteBehavior.Cascade);
-
-            modelBuilder.Entity<OrderItem>()
-                .HasMany(oi => oi.Extensions)
-                .WithOne()
-                .HasForeignKey(e => e.TargetId)
-                .HasPrincipalKey(oi => oi.Id)
-                .OnDelete(DeleteBehavior.Cascade);
-
-            modelBuilder.Entity<Product>()
-                .HasMany(p => p.Extensions)
-                .WithOne()
-                .HasForeignKey(e => e.TargetId)
-                .HasPrincipalKey(p => p.Id)
-                .OnDelete(DeleteBehavior.Cascade);
-
-            modelBuilder.Entity<Supplier>()
-                .HasMany(s => s.Extensions)
-                .WithOne()
-                .HasForeignKey(e => e.TargetId)
-                .HasPrincipalKey(s => s.Id)
-                .OnDelete(DeleteBehavior.Cascade);
-
             logger.LogInformation("Model creating configurations applied.");
+
+            // Configure relationships and constraints
+
+            // Extension configuration
+            modelBuilder.Entity<Extension>()
+                .HasMany(e => e.Widgets)
+                .WithMany(w => w.Extensions)
+                .UsingEntity(j => j.ToTable("WidgetExtensions"));
+
+            // ModifierExtension configuration
+            modelBuilder.Entity<ModifierExtension>()
+                .HasMany(me => me.Widgets)
+                .WithMany(w => w.ModifierExtensions)
+                .UsingEntity(j => j.ToTable("WidgetModifierExtensions"));
+
+            // Property configuration
+            modelBuilder.Entity<Property>()
+                .HasMany(p => p.Widgets)
+                .WithMany(w => w.Properties)
+                .UsingEntity(j => j.ToTable("WidgetProperties"));
+
+            // Widget configuration
+            modelBuilder.Entity<Widget>()
+                .HasMany(w => w.Extensions)
+                .WithMany(e => e.Widgets)
+                .UsingEntity(j => j.ToTable("WidgetExtensions"));
+
+            modelBuilder.Entity<Widget>()
+                .HasMany(w => w.ModifierExtensions)
+                .WithMany(me => me.Widgets)
+                .UsingEntity(j => j.ToTable("WidgetModifierExtensions"));
+
+            modelBuilder.Entity<Widget>()
+                .HasMany(w => w.Properties)
+                .WithMany(p => p.Widgets)
+                .UsingEntity(j => j.ToTable("WidgetProperties"));
         }
 
         public override int SaveChanges()
@@ -86,6 +66,7 @@ namespace Data.Alaska
             logger.LogInformation("Saving changes to the database asynchronously.");
             return await base.SaveChangesAsync(cancellationToken);
         }
-    }
-}
 
+    }
+
+}

@@ -2,7 +2,7 @@ using Data.Alaska.Models.Base;
 
 namespace Data.Alaska.Models;
 
-public class Extension : Element
+public class ModifierExtension : Element
 {
 
     public string Name { get; set; } = string.Empty;

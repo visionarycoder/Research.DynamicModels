@@ -3,11 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{FDEC8FED-6537-4887-8AA4-980CB61E4635}"
-	ProjectSection(SolutionItems) = preProject
-		ScratchPad.txt = ScratchPad.txt
-	EndProjectSection
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Access.Denali.Contract", "Access.Denali.Contract\Access.Denali.Contract.csproj", "{341775F6-223E-4D39-8002-71C2630593AC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Access.Denali.Service", "Access.Denali.Service\Access.Denali.Service.csproj", "{75322841-A6BF-47CF-A24E-65AD45871C4E}"
@@ -15,6 +10,18 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Client.Cli.ConsoleApp", "Client.Cli.ConsoleApp\Client.Cli.ConsoleApp.csproj", "{C5BDAE56-F92E-4C7B-82F7-5C44E643DC33}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data.Alaska", "Data.Alaska\Data.Alaska.csproj", "{7D4F88FD-AC92-4A87-A750-3CD53F508556}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ifx.Data", "Ifx.Data\Ifx.Data.csproj", "{6CA3343F-7158-464B-BDE6-F49EEE1F78BB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clients", "Clients", "{9224EDDD-36B2-43A2-968D-4FA70B1B2C01}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Components", "Components", "{A4ABF295-8268-4E8B-B2FB-8CE6C2F92575}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resources", "Resources", "{3B8EE316-5037-4366-844B-C832D11D19A7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{F52056AD-D85D-4DDC-900F-0F9F3F77D396}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ifx", "Ifx\Ifx.csproj", "{A07C40B9-7C8F-4A04-BCED-766436B1FC08}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,9 +45,25 @@ Global
 		{7D4F88FD-AC92-4A87-A750-3CD53F508556}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D4F88FD-AC92-4A87-A750-3CD53F508556}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D4F88FD-AC92-4A87-A750-3CD53F508556}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CA3343F-7158-464B-BDE6-F49EEE1F78BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CA3343F-7158-464B-BDE6-F49EEE1F78BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CA3343F-7158-464B-BDE6-F49EEE1F78BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CA3343F-7158-464B-BDE6-F49EEE1F78BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A07C40B9-7C8F-4A04-BCED-766436B1FC08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A07C40B9-7C8F-4A04-BCED-766436B1FC08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A07C40B9-7C8F-4A04-BCED-766436B1FC08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A07C40B9-7C8F-4A04-BCED-766436B1FC08}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{341775F6-223E-4D39-8002-71C2630593AC} = {A4ABF295-8268-4E8B-B2FB-8CE6C2F92575}
+		{75322841-A6BF-47CF-A24E-65AD45871C4E} = {A4ABF295-8268-4E8B-B2FB-8CE6C2F92575}
+		{C5BDAE56-F92E-4C7B-82F7-5C44E643DC33} = {9224EDDD-36B2-43A2-968D-4FA70B1B2C01}
+		{7D4F88FD-AC92-4A87-A750-3CD53F508556} = {3B8EE316-5037-4366-844B-C832D11D19A7}
+		{6CA3343F-7158-464B-BDE6-F49EEE1F78BB} = {F52056AD-D85D-4DDC-900F-0F9F3F77D396}
+		{A07C40B9-7C8F-4A04-BCED-766436B1FC08} = {F52056AD-D85D-4DDC-900F-0F9F3F77D396}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {542913DB-5CF6-4A8D-B987-6A1BB489FBA7}
